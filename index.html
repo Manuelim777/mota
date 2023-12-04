@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reproductor de Música</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    #musicList {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #musicList li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Reproductor de Música</h1>
+  
+  <input type="file" id="fileInput" accept=".mp3" multiple>
+  
+  <ul id="musicList"></ul>
+
+  <script>
+    document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+
+    function handleFileSelect(event) {
+      const files = event.target.files;
+      const musicList = document.getElementById('musicList');
+
+      for (const file of files) {
+        const listItem = document.createElement('li');
+        listItem.textContent = file.name;
+        musicList.appendChild(listItem);
+      }
+    }
+  </script>
+</body>
+</html>
